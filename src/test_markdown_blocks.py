@@ -230,7 +230,7 @@ This is the same paragraph on a new line
                 "<div><blockquote>This is a blockquote block</blockquote><p>this is paragraph text</p></div>",
             )
 
-        def test_code(self):
+        def test_codeblock(self):
             md = """
     ```
     This is text that _should_ remain
