@@ -33,3 +33,15 @@ def extract_title(md):
             return line[2:]
     raise ValueError("no title found")
 
+
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    for entry in os.listdir(dir_path_content):
+        entry_path = os.path.join(dir_path_content, entry)
+        if os.path.isdir(entry_path):
+            generate_pages_recursive(
+                entry_path, template_path, os.path.join(dest_dir_path, entry)
+            )
+        elif entry.endswith(".md"):
+            dest_file_name = entry[:-3] + ".html"
+            dest_file_path = os.path.join(dest_dir_path, dest_file_name)
+            generate_page(entry_path, template_path, dest_file_path)
